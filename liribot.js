@@ -1,3 +1,4 @@
+// require npms
 require("dotenv").config();
 const inquirer = require("inquirer");
 const seatgeek = require("./keys.js");
@@ -7,7 +8,7 @@ const moment = require("moment");
 const fs = require("fs");
 const keys = require("./keys.js");
 
-// // link seatgeek key to this file - NEED TO FIGURE OUT FOR LATER
+// // link seatgeek key to this file - NEED TO FIGURE OUT WHY THIS ISN'T WORKING FOR LATER
 // seatgeek.connect({
 //   clientKey: process.env.SEATGEEK_CLIENT_ID
 // });
@@ -50,15 +51,20 @@ function cli() {
             }
           ])
           .then(function(concertThis) {
-            const seatgeekClientKey = "MTg3NjM0ODJ8MTU3MDMwMjk2Mi41Nw"; // eventually do a dotenv if time
+            const seatgeekClientKey = "MTg3NjM0ODJ8MTU3MDMwMjk2Mi41Nw"; // eventually do a dotenv if time (SORRY SAL)
             // console.log(
             //   `band selection is working - ${concertThis.bandSelection}`
             // );
+            // NOTE TO SAL OR NICK - I kept on getting an error so I couldn't check these, but I could see the JSON when I looked at my browser so I believe these are correct
             const bandSearchURL = `https:api.seatgeek.com/2/events?performers.slug=${concertThis.bandSelection}&client_id=${seatgeekClientKey}`;
             axios
               .get(bandSearchURL)
               .then(function(response) {
-                const JSONdata = JSON.stringify(response.events, null, 2);
+                const JSONdata = JSON.stringify(
+                  response.data.events[0],
+                  null,
+                  2
+                );
                 // console.log(JSONdata);
                 const concertData = [
                   "Artist: " + JSONdata.title,
@@ -166,8 +172,27 @@ function cli() {
             axios
               .get(movieSearchURL)
               .then(function(response) {
-                const JSONmovieData = JSON.stringify(response, null, 2);
-                console.log(JSONmovieData.Title);
+                // console.log("Title: " + response.data.Title);
+                // console.log("Release Date: " + response.data.Year);
+                // console.log("IMBD rating: " + response.data.imdbRating);
+                // console.log(
+                //   "Rotten Tomatoes Rating: " + response.data.Ratings[1].Value
+                // );
+                // console.log("Country: " + response.data.Country);
+                // console.log("Language: " + response.data.Language);
+                // console.log("Plot: " + response.data.Plot);
+                // console.log("Actors/Actresses: " + response.data.Actors);
+                const movieData = [
+                  "Title: " + response.data.Title,
+                  "Release Date: " + response.data.Year,
+                  "IMBD rating: " + response.data.imdbRating,
+                  "Rotten Tomatoes Rating: " + response.data.Ratings[1].Value,
+                  "Country: " + response.data.Country,
+                  "Language: " + response.data.Language,
+                  "Plot: " + response.data.Plot,
+                  "Actors/Actresses: " + response.data.Actors
+                ].join("\n");
+                console.log("\n" + movieData + divider);
               }) // closes then response
               .catch(function(err, data) {
                 if (err) {
@@ -175,18 +200,9 @@ function cli() {
                 }
               });
           }); // closes then movieThis
-
-        // * Title of the movie.
-        // * Year the movie came out.
-        // * IMDB Rating of the movie.
-        // * Rotten Tomatoes Rating of the movie.
-        // * Country where the movie was produced.
-        // * Language of the movie.
-        // * Plot of the movie.
-        // * Actors in the movie.
       } // closes movie if
       if (searchType.selection === "Search for something random") {
-        // function(concertThis) {
+        // function(randomThis) {
         console.log(
           "HERE YOU WILL PUT THE PROMPT FOR RANDOM followed by the search"
         );
