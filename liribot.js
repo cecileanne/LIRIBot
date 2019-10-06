@@ -1,7 +1,7 @@
 // require npms
 require("dotenv").config();
 const inquirer = require("inquirer");
-const seatgeek = require("seatgeek");
+// const seatgeek = require("seatgeek");
 const Spotify = require("node-spotify-api");
 const axios = require("axios");
 const moment = require("moment");
@@ -218,8 +218,9 @@ function cli() {
         searchQuery = dataArray[1];
         // three versions
         if (requestChoice == "concert-this") {
-          searchQuery = concertThis.bandSelection;
-          concertThis();
+          //   searchQuery = concertThis.bandSelection;
+          //   concertThis();
+          console.log(`sorry this isn't working right now!`);
         }
         if (requestChoice == "spotify-this") {
           searchQuery = spotifyThisSong.songSelection;
