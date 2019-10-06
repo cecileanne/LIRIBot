@@ -64,5 +64,6 @@ Developer!
 ## Video of LiriBot in Action!
 
 Apologies - Only Music and Movies is working right now, but update soon to come!
+https://drive.google.com/file/d/1lItoscZSBSJedE9qrKCsivyq1llk2td2/view
 
 <!-- LINK TO VIDEO -->

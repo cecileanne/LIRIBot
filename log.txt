@@ -62,3 +62,19 @@ Plot: A boy stands on a station platform as a train is about to leave. Should he
 Actors/Actresses: Jared Leto, Sarah Polley, Diane Kruger, Linh Dan Pham
 ------------------------------------------------------------
 
+Song: "Deceptacon"
+Performed by: "Le Tigre"
+From the album: "Le Tigre"
+Preview link: "https://open.spotify.com/track/5773KSWFzg9kCc8yazjbSt"
+------------------------------------------------------------
+
+Title: Working Girl
+Release Date: 1988
+IMBD rating: 6.8
+Rotten Tomatoes Rating: 85%
+Country: USA
+Language: English
+Plot: When a secretary's idea is stolen by her boss, she seizes an opportunity to steal it back by pretending she has her boss' job.
+Actors/Actresses: Harrison Ford, Sigourney Weaver, Melanie Griffith, Alec Baldwin
+------------------------------------------------------------
+
