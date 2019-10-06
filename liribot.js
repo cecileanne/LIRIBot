@@ -31,7 +31,7 @@ function cli() {
           "Find upcoming shows for a certain band",
           "Find a song on Spotify",
           "Find information on your favorite movie",
-          "Search for something random"
+          "Liri's Choice"
         ],
         name: "selection"
       }
@@ -204,11 +204,23 @@ function cli() {
             //   });
           }); // closes then movieThis
       } // closes movie if
-      if (searchType.selection === "Search for something random") {
+      if (searchType.selection === "Liri's Choice") {
         // function(randomThis) {
-        console.log(
-          "HERE YOU WILL PUT THE PROMPT FOR RANDOM followed by the search"
-        );
+        // console.log(
+        //   "HERE YOU WILL PUT THE PROMPT FOR RANDOM followed by the search"
+        // );
+        fs.readFile("random.txt", "utf8", function(err) {
+          if (err) throw err;
+        });
+        if (request == "concert-this") {
+          concertThis();
+        }
+        if (request == "spotify-this") {
+          spotifyThisSong();
+        }
+        if (request == "movie-this") {
+          movieThis();
+        }
       } // closes random do-what-it-says if
     }); // closes then after intial inquirer
 } // closes cli function
