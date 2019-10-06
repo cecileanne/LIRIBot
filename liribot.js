@@ -1,7 +1,7 @@
 // require npms
 require("dotenv").config();
 const inquirer = require("inquirer");
-const seatgeek = require("./keys.js");
+const seatgeek = require("seatgeek");
 const Spotify = require("node-spotify-api");
 const axios = require("axios");
 const moment = require("moment");
@@ -50,7 +50,7 @@ function cli() {
               default: "Sigrid"
             }
           ])
-          .then(function(concertThis) {
+          .then(function concertThis(concertThis) {
             const seatgeekClientKey = "MTg3NjM0ODJ8MTU3MDMwMjk2Mi41Nw"; // eventually do a dotenv if time (SORRY SAL)
             // console.log(
             //   `band selection is working - ${concertThis.bandSelection}`
@@ -94,7 +94,7 @@ function cli() {
               default: `"The Sign" Ace of Base`
             }
           ])
-          .then(function(spotifyThisSong) {
+          .then(function spotifyThis(spotifyThisSong) {
             spotify.search(
               { type: "track", query: `${spotifyThisSong.songSelection}` },
               function(err, data) {
@@ -166,7 +166,7 @@ function cli() {
               default: "Mr. Nobody"
             }
           ])
-          .then(function(movieThis) {
+          .then(function movieThis(movieThis) {
             const movieSearchURL = `http://www.omdbapi.com/?t=${movieThis.movieSelection}&apikey=trilogy`;
             // console.log(`The movie you chose is ` + movieThis.movieSelection);
             axios.get(movieSearchURL).then(function(response) {
@@ -212,13 +212,21 @@ function cli() {
         fs.readFile("random.txt", "utf8", function(err) {
           if (err) throw err;
         });
-        if (request == "concert-this") {
+        // parse the data line
+        const dataArray = data.split(",");
+        requestChoice = dataArray[0];
+        searchQuery = dataArray[1];
+        // three versions
+        if (requestChoice == "concert-this") {
+          searchQuery = concertThis.bandSelection;
           concertThis();
         }
-        if (request == "spotify-this") {
-          spotifyThisSong();
+        if (requestChoice == "spotify-this") {
+          searchQuery = spotifyThisSong.songSelection;
+          spotifyThis();
         }
-        if (request == "movie-this") {
+        if (requestChoice == "movie-this") {
+          searchQuery = movieThis.movieSelection;
           movieThis();
         }
       } // closes random do-what-it-says if
