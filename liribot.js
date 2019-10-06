@@ -169,36 +169,39 @@ function cli() {
           .then(function(movieThis) {
             const movieSearchURL = `http://www.omdbapi.com/?t=${movieThis.movieSelection}&apikey=trilogy`;
             // console.log(`The movie you chose is ` + movieThis.movieSelection);
-            axios
-              .get(movieSearchURL)
-              .then(function(response) {
-                // console.log("Title: " + response.data.Title);
-                // console.log("Release Date: " + response.data.Year);
-                // console.log("IMBD rating: " + response.data.imdbRating);
-                // console.log(
-                //   "Rotten Tomatoes Rating: " + response.data.Ratings[1].Value
-                // );
-                // console.log("Country: " + response.data.Country);
-                // console.log("Language: " + response.data.Language);
-                // console.log("Plot: " + response.data.Plot);
-                // console.log("Actors/Actresses: " + response.data.Actors);
-                const movieData = [
-                  "Title: " + response.data.Title,
-                  "Release Date: " + response.data.Year,
-                  "IMBD rating: " + response.data.imdbRating,
-                  "Rotten Tomatoes Rating: " + response.data.Ratings[1].Value,
-                  "Country: " + response.data.Country,
-                  "Language: " + response.data.Language,
-                  "Plot: " + response.data.Plot,
-                  "Actors/Actresses: " + response.data.Actors
-                ].join("\n");
+            axios.get(movieSearchURL).then(function(response) {
+              // console.log("Title: " + response.data.Title);
+              // console.log("Release Date: " + response.data.Year);
+              // console.log("IMBD rating: " + response.data.imdbRating);
+              // console.log(
+              //   "Rotten Tomatoes Rating: " + response.data.Ratings[1].Value
+              // );
+              // console.log("Country: " + response.data.Country);
+              // console.log("Language: " + response.data.Language);
+              // console.log("Plot: " + response.data.Plot);
+              // console.log("Actors/Actresses: " + response.data.Actors);
+              const movieData = [
+                "Title: " + response.data.Title,
+                "Release Date: " + response.data.Year,
+                "IMBD rating: " + response.data.imdbRating,
+                "Rotten Tomatoes Rating: " + response.data.Ratings[1].Value,
+                "Country: " + response.data.Country,
+                "Language: " + response.data.Language,
+                "Plot: " + response.data.Plot,
+                "Actors/Actresses: " + response.data.Actors
+              ].join("\n");
+              //   console.log("\n" + movieData + divider);
+              // add to the file and print
+              fs.appendFile("log.txt", movieData + divider, function(err) {
+                if (err) throw err;
                 console.log("\n" + movieData + divider);
-              }) // closes then response
-              .catch(function(err, data) {
-                if (err) {
-                  return console.log("Error occurred: " + err);
-                }
-              });
+              }); // closes append
+            }); // closes then response
+            //   .catch(function(err, data) {
+            //     if (err) {
+            //       return console.log("Error occurred: " + err);
+            //     }
+            //   });
           }); // closes then movieThis
       } // closes movie if
       if (searchType.selection === "Search for something random") {

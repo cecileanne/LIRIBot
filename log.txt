@@ -16,3 +16,33 @@ From the album: "Kiss (Deluxe)"
 Preview link: "https://open.spotify.com/track/3TGRqZ0a2l1LRblBkJoaDx"
 ------------------------------------------------------------
 
+Title: Working Girl
+Release Date: 1988
+IMBD rating: 6.8
+Rotten Tomatoes Rating: 85%
+Country: USA
+Language: English
+Plot: When a secretary's idea is stolen by her boss, she seizes an opportunity to steal it back by pretending she has her boss' job.
+Actors/Actresses: Harrison Ford, Sigourney Weaver, Melanie Griffith, Alec Baldwin
+------------------------------------------------------------
+
+Title: Batman Begins
+Release Date: 2005
+IMBD rating: 8.2
+Rotten Tomatoes Rating: 84%
+Country: USA, UK
+Language: English, Urdu, Mandarin
+Plot: After training with his mentor, Batman begins his fight to free crime-ridden Gotham City from corruption.
+Actors/Actresses: Christian Bale, Michael Caine, Liam Neeson, Katie Holmes
+------------------------------------------------------------
+
+Title: Moonrise Kingdom
+Release Date: 2012
+IMBD rating: 7.8
+Rotten Tomatoes Rating: 93%
+Country: USA
+Language: English
+Plot: A pair of young lovers flee their New England town, which causes a local search party to fan out to find them.
+Actors/Actresses: Bruce Willis, Edward Norton, Bill Murray, Frances McDormand
+------------------------------------------------------------
+
