@@ -4,7 +4,31 @@
 
 ## What is LiriBot?
 
-LiriBot is a Command Line Interface App that allows users to search for Entertainment information - either movies (via OMDB), music (via Spotify), or search for when a band will be performing (via SeatGeek).
+LiriBot is a Command Line Interface App that allows users to search for Entertainment information - either movies (via OMDB), music (via Spotify), or search for when a band will be performing (via SeatGeek). Liri's Choice is a way of finding out about any of these types of searches but from a predetermined file.
+
+### Concert information you will receive
+
+1. Artist Name (which you will provide)
+2. Venue, City of show
+3. Date of the event
+
+### Song information you will receive
+
+1. Song Name (which you will provide)
+2. Artist(s)
+3. Album the song track is from
+4. A link to a preview from Spotify
+
+### Movie information you will receive
+
+1. Title of the movie.
+2. Year the movie came out.
+3. IMDB Rating of the movie.
+4. Rotten Tomatoes Rating of the movie.
+5. Country where the movie was produced.
+6. Language of the movie.
+7. Plot of the movie.
+8. Actresses/Actors in the movie.
 
 ## Getting Started
 
