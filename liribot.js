@@ -1,17 +1,12 @@
 // require npms
 require("dotenv").config();
 const inquirer = require("inquirer");
-// const seatgeek = require("seatgeek");
+const seatgeek = require("./keys.js");
 const Spotify = require("node-spotify-api");
 const axios = require("axios");
 const moment = require("moment");
 const fs = require("fs");
 const keys = require("./keys.js");
-
-// // link seatgeek key to this file - NEED TO FIGURE OUT WHY THIS ISN'T WORKING FOR LATER
-// seatgeek.connect({
-//   clientKey: process.env.SEATGEEK_CLIENT_ID
-// });
 
 // console.log(keys.spotify) to see if it's linking correctly;
 const spotify = new Spotify(keys.spotify);
@@ -51,21 +46,18 @@ function cli() {
             }
           ])
           .then(function concertThis(concertThis) {
-            const seatgeekClientKey = "MTg3NjM0ODJ8MTU3MDMwMjk2Mi41Nw"; // eventually do a dotenv if time (SORRY SAL)
             // console.log(
             //   `band selection is working - ${concertThis.bandSelection}`
             // );
-            // NOTE TO SAL OR NICK - I kept on getting an error so I couldn't check these, but I could see the JSON when I looked at my browser so I believe these are correct
-            const bandSearchURL = `https:api.seatgeek.com/2/events?performers.slug=${concertThis.bandSelection}&client_id=${seatgeekClientKey}`;
+            const clientKey = process.env.SEATGEEK_CLIENT_ID;
+            const bandSearchURL = `https://api.seatgeek.com/2/events?performers.slug=${concertThis.bandSelection}&client_id=${clientKey}`;
             axios
               .get(bandSearchURL)
               .then(function(response) {
-                const JSONdata = JSON.stringify(
-                  response.data.events[0],
-                  null,
-                  2
-                );
+                const JSONdata = response.data.events[0];
                 // console.log(JSONdata);
+                // console.log(JSONdata.venue);
+
                 const concertData = [
                   "Artist: " + JSONdata.title,
                   "Venue: " +
@@ -218,9 +210,9 @@ function cli() {
         searchQuery = dataArray[1];
         // three versions
         if (requestChoice == "concert-this") {
-          //   searchQuery = concertThis.bandSelection;
-          //   concertThis();
-          console.log(`sorry this isn't working right now!`);
+          searchQuery = concertThis.bandSelection;
+          concertThis();
+          //   console.log(`sorry this isn't working right now!`);
         }
         if (requestChoice == "spotify-this") {
           searchQuery = spotifyThisSong.songSelection;
